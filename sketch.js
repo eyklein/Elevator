@@ -134,6 +134,12 @@ if(fixxed==1){
   //stroke(255, 0, 0,elevatorOpacity);
   //console.log(_this.pos.y)
   var absPos=_this.getMaterPos();
+  //roap
+  // rect((absPos.x+widthElevator/2) * scalePix,
+  //   0,
+  //   5,
+  //   absPos.y * scalePix
+  // )
   rect(absPos.x * scalePix,
     absPos.y * scalePix,
     widthElevator * scalePix,
@@ -169,9 +175,9 @@ if(fixxed==1){
         
         stroke(200)
         
-        arrow(absPos.x * scalePix,
+        arrow(absPos.x * scalePix+1,
         absPos.y * scalePix,
-        absPos.x * scalePix,
+        absPos.x * scalePix+1,
         absPos.y * scalePix+this.getMaterVel().y*10)
         
         
@@ -184,9 +190,9 @@ if(fixxed==1){
         absPos.x * scalePix-40,
         absPos.y * scalePix);
         stroke(0,0,200)
-        arrow(absPos.x * scalePix,
+        arrow(absPos.x * scalePix-1,
         absPos.y * scalePix,
-        absPos.x * scalePix,
+        absPos.x * scalePix-1,
         absPos.y * scalePix+this.vel.y*10)
 
   }
@@ -204,10 +210,12 @@ function arrow(_x,_y,_x2,_y2,_graphics){
     line(_x,_y,_x2,_y2);
     var direction=createVector(_x-_x2,_y-_y2);
     direction.normalize();
+    var trigleWidth=1
+    var trigleHeight=3
     //if(dist(_x,_y,_x2,_y2)>5){
       triangle(_x2,_y2,
-      _x2+direction.y*5+direction.x*10,_y2+direction.x*-5+direction.y*10,
-      _x2+direction.y*-5+direction.x*10,_y2+direction.x*5+direction.y*10)
+      _x2+direction.y*trigleWidth,_y2+direction.x*-trigleWidth+direction.y*trigleHeight,
+      _x2+direction.y*-trigleWidth,_y2+direction.x*trigleWidth+direction.y*trigleHeight)
     //}
     
   }
